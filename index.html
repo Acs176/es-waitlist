@@ -97,8 +97,8 @@
 
     .split {
       display: grid;
-      grid-template-columns: minmax(320px, 1fr) minmax(340px, 1.4fr);
-      gap: clamp(24px, 4vw, 64px);
+      grid-template-columns: minmax(340px, 1.2fr) minmax(380px, 1.5fr);
+      gap: clamp(16px, 3vw, 40px);
       align-items: center;
       min-height: calc(100vh - 180px);
     }
@@ -106,41 +106,27 @@
     .mockup-frame {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-        radial-gradient(240px 140px at 20% 15%, rgba(255, 255, 255, 0.18), transparent 70%);
-      box-shadow: var(--shadow);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
-    .mockup-frame::after {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: calc(var(--radius-xl) - 10px);
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-    }
-
-    .mockup-label {
-      position: relative;
-      z-index: 1;
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-2);
+    .mockup-image {
+      width: 78%;
+      max-width: 520px;
+      height: auto;
+      max-height: 82vh;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      margin: 0 auto;
     }
 
     .signup-card {
       background: transparent;
       border-radius: 0;
       border: none;
-      padding: clamp(40px, 6vw, 72px);
+      padding: clamp(32px, 5vw, 56px) clamp(16px, 3vw, 28px);
       box-shadow: none;
       display: grid;
       gap: 26px;
@@ -260,8 +246,26 @@
         min-height: auto;
       }
 
+      .mockup-section {
+        order: 2;
+      }
+
+      .signup-card {
+        order: 1;
+      }
+
       .mockup-frame {
-        aspect-ratio: 3 / 4;
+        padding: 12px 0;
+        max-width: 300px;
+        justify-content: center;
+        margin: 0 auto;
+      }
+
+      .mockup-image {
+        width: 100%;
+        max-width: none;
+        max-height: none;
+        margin: 0 auto;
       }
 
       footer {
@@ -283,9 +287,9 @@
       </header>
 
       <main class="split">
-        <section class="reveal delay-2" aria-label="Product mockup">
+        <section class="mockup-section reveal delay-2" aria-label="Product mockup">
           <div class="mockup-frame">
-            <div class="mockup-label">Mockup Space</div>
+            <img class="mockup-image" src="mockup.png" alt="Earned Screen app mockup" />
           </div>
         </section>
 
