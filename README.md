@@ -20,6 +20,7 @@ npm run build
 ```
 
 `VITE_WAITLIST_API_URL` is read from `.env.production` during build.
+`VITE_BASE_PATH` controls GitHub Pages subpath base (for this repo: `/es-waitlist/`).
 
 ## Lambda deploy (SAM)
 Build and deploy the backend:
