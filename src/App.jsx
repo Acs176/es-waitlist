@@ -82,7 +82,11 @@ function App() {
         <main className="split">
           <section className="mockup-section reveal delay-2" aria-label="Product mockup">
             <div className="mockup-frame">
-              <img className="mockup-image" src="/mockup2.png" alt="Earned Screen app mockup" />
+              <img
+                className="mockup-image"
+                src={`${import.meta.env.BASE_URL}mockup2.png`}
+                alt="Earned Screen app mockup"
+              />
             </div>
           </section>
 
