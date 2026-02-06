@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  PAGE_ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
 permissions:
   contents: read
   pages: write
@@ -22,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -37,6 +43,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: ${{ env.PAGE_ARTIFACT_NAME }}
           path: dist
 
   deploy:
@@ -49,3 +56,5 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ env.PAGE_ARTIFACT_NAME }}
