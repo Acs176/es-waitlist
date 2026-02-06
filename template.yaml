@@ -1,0 +1,35 @@
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  WaitlistFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs24.x
+      Handler: lambda/waitlist.handler
+      CodeUri: .
+
+      Environment:
+        Variables:
+          WAITLIST_TABLE: waitlist
+          CORS_ALLOW_ORIGIN: https://Acs176.github.io
+
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:PutItem
+            Resource: arn:aws:dynamodb:eu-north-1:*:table/waitlist
+
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins:
+            - "*"
+          AllowMethods:
+            - POST
+          AllowHeaders:
+            - content-type
+
+Outputs:
+  WaitlistFunctionUrl:
+    Value: !GetAtt WaitlistFunctionUrl.FunctionUrl
